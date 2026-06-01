@@ -11,10 +11,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0F2347;--navy2:#182040;--navy3:#111827;--navy-dark:#0a1020;
+  /* 宝石蓝色系 — 去掉压抑黑色 */
+  --navy:#0F2347;
+  --navy2:#1A3A6B;        /* 合作流程/联系我们 — 宝石蓝 */
+  --navy3:#1C3461;        /* 页面主背景 — 宝石蓝（替换原#111827黑） */
+  --navy-dark:#1E3D72;    /* 案例页背景 — 明亮宝石蓝（替换原近黑色） */
   --gold:#F4C542;--gold2:#f7d168;--gold3:#D4A820;--gold-dim:#9A7010;
-  --white:#fff;--text-dim:#CBD5E1;--text-faint:#7A8FB8;
-  --border:rgba(255,255,255,0.08);--border2:rgba(244,197,66,0.22);
+  --white:#fff;--text-dim:#CBD5E1;--text-faint:#8AAAC8;
+  --border:rgba(255,255,255,0.11);--border2:rgba(244,197,66,0.22);
   --line:#e2e8f0;--bg-light:#f8fafc;
   --blue:#4A7CFF;--blue2:#7B9FFF;
   --r:12px;--r2:18px;
@@ -22,22 +26,22 @@
 html{scroll-behavior:smooth}
 body{font-family:"Noto Sans SC",sans-serif;color:var(--white);background:var(--navy3);line-height:1.7;-webkit-font-smoothing:antialiased}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(17,24,39,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,0.5)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between}
+/* ── NAV — 宝石蓝半透明，Logo放大 ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(20,46,100,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.1);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 28px rgba(0,0,0,0.25)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 48px;height:70px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{text-decoration:none;display:flex;align-items:center}
 .nav-logo svg{display:block}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:9px 20px;border-radius:8px;font-weight:700!important;box-shadow:0 2px 12px rgba(244,197,66,0.28);transition:all .2s!important}
-.nav-cta:hover{background:var(--gold2)!important;transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,197,66,0.4)!important}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:9px 20px;border-radius:8px;font-weight:700!important;box-shadow:0 2px 12px rgba(244,197,66,0.3);transition:all .2s!important}
+.nav-cta:hover{background:var(--gold2)!important;transform:translateY(-1px);box-shadow:0 6px 20px rgba(244,197,66,0.42)!important}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
-.mobile-menu{display:none;flex-direction:column;background:rgba(17,24,39,0.99);border-top:1px solid var(--border);padding:16px 32px 24px}
+.mobile-menu{display:none;flex-direction:column;background:rgba(20,46,100,0.98);border-top:1px solid rgba(255,255,255,0.1);padding:16px 32px 24px}
 .mobile-menu.open{display:flex}
-.mobile-menu a{padding:13px 0;font-size:15px;font-weight:500;color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:color .2s}
+.mobile-menu a{padding:13px 0;font-size:15px;font-weight:500;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.09);transition:color .2s}
 .mobile-menu a:last-child{border-bottom:none;margin-top:8px;color:var(--gold);font-weight:700}
 .mobile-menu a:hover{color:var(--gold)}
 
@@ -52,7 +56,7 @@ section{padding:120px 48px}
 .s-sub-ink{font-size:15px;color:#334155;max-width:540px;line-height:1.85}
 
 /* ── HERO ── */
-#hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(145deg,#111827 0%,#182040 55%,#1a2550 100%);padding-top:64px;position:relative;overflow:hidden}
+#hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(145deg,#1C3461 0%,#1A3A6B 55%,#1E4080 100%);padding-top:70px;position:relative;overflow:hidden}
 .hero-glow1{position:absolute;top:-200px;right:-100px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(244,197,66,0.05) 0%,transparent 65%);pointer-events:none}
 .hero-glow2{position:absolute;bottom:-150px;left:80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(26,92,255,0.1) 0%,transparent 65%);pointer-events:none}
 .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center;max-width:1200px;margin:0 auto;width:100%;padding:0 48px}
@@ -107,7 +111,8 @@ section{padding:120px 48px}
 .srv-d{font-size:12px;color:#475569;line-height:1.65}
 
 /* ── PROCESS (NAVY) ── */
-#process{background:var(--navy2)}
+#process{background:var(--navy2);padding:120px 48px}
+#process .container{max-width:1200px;margin:0 auto}
 .proc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
 .proc-line{position:absolute;top:22px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:1px;background:linear-gradient(90deg,rgba(244,197,66,0.2),rgba(244,197,66,0.6),rgba(244,197,66,0.2))}
 .proc-step{text-align:center;padding:0 18px}
@@ -145,7 +150,7 @@ section{padding:120px 48px}
 .wm-l{font-size:11px;color:#94a3b8;letter-spacing:.03em;margin-bottom:6px}
 .wm-desc{font-size:11px;color:#64748b;line-height:1.65}
 
-/* ── CASES (DARK) ── */
+/* ── CASES — 宝石蓝背景替换近黑色 ── */
 #cases{background:var(--navy-dark)}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
 .case-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:var(--r);padding:28px 22px;position:relative;overflow:hidden;transition:all .3s}
@@ -171,6 +176,7 @@ section{padding:120px 48px}
 
 /* ── FAQ (WHITE) ── */
 #faq{background:#fff;padding:120px 48px}
+#faq .container{max-width:1200px;margin:0 auto}
 .faq-layout{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:start}
 .faq-aside-t{font-family:"Noto Serif SC",serif;font-size:28px;font-weight:700;color:#0f172a;line-height:1.3;margin-bottom:12px;letter-spacing:-.01em}
 .faq-aside-p{font-size:14px;color:#475569;line-height:1.75;margin-bottom:24px}
@@ -253,7 +259,7 @@ section{padding:120px 48px}
 .form-error.show{display:block}
 
 /* ── FOOTER ── */
-footer{background:var(--navy3);border-top:1px solid var(--border);padding:36px 48px}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.1);padding:36px 48px}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .footer-logo{display:flex;align-items:center}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.28)}
@@ -306,7 +312,7 @@ footer{background:var(--navy3);border-top:1px solid var(--border);padding:36px 4
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo" aria-label="ETLink首页">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="160" height="38" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="178" height="43" aria-hidden="true">
         <defs><linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B9FFF"/><stop offset="100%" stop-color="#4A7CFF"/></linearGradient></defs>
         <polygon points="4,26 38,14 30,26" fill="url(#ng)"/>
         <polygon points="4,26 38,14 30,28" fill="rgba(74,124,255,0.2)"/>
@@ -355,8 +361,6 @@ footer{background:var(--navy3);border-top:1px solid var(--border);padding:36px 4
   <div class="hero-glow2"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge"><span class="badge-dot"></span>专注服务澳洲中小企业 · 自2020年</div>
-      <div class="h-kicker">澳洲企业远程团队解决方案</div>
       <div class="h-line1">在中国建立您的</div>
       <div class="h-line2">远程团队</div>
       <div class="h-line3">全程托管，无需担忧</div>
@@ -598,15 +602,6 @@ footer{background:var(--navy3);border-top:1px solid var(--border);padding:36px 4
                   <option>销售支持</option><option>AI自动化支持</option><option>其他岗位</option>
                 </select>
               </div>
-              <div class="fg"><label>预算范围（可选）</label>
-                <select id="f-budget">
-                  <option value="">暂未确定</option>
-                  <option>2000 AUD 以下</option>
-                  <option>2000 - 5000 AUD</option>
-                  <option>5000 - 10000 AUD</option>
-                  <option>10000 AUD 以上</option>
-                </select>
-              </div>
             </div>
             <div class="fg"><label>需求描述 *</label><textarea id="f-message" placeholder="请简要介绍您的企业情况及招聘需求…" required></textarea></div>
             <button type="submit" class="btn-submit" id="submitBtn">发送咨询 →</button>
@@ -679,20 +674,19 @@ async function submitForm(e){
     email:document.getElementById("f-email").value.trim(),
     phone:document.getElementById("f-phone").value.trim(),
     position:document.getElementById("f-position").value,
-    budget:document.getElementById("f-budget").value,
     message:document.getElementById("f-message").value.trim()
   };
   try{
     var res=await fetch("/api/leads",{
       method:"POST",
-      headers:{"Content-Type":"application/json"},
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
       body:JSON.stringify(data)
     });
-    var ct=res.headers.get("content-type")||"";
-    if(!ct.includes("application/json")){
-      throw new Error("服务器返回格式错误，请直接发送邮件至 hello@etlink.com.au");
-    }
-    var json=await res.json();
+    // Read raw text first — never assume JSON
+    var raw=await res.text();
+    var json;
+    try{ json=JSON.parse(raw); }
+    catch(_){ json={success:false,message:"服务器返回非JSON响应 (HTTP "+res.status+")，请发邮件至 hello@etlink.com.au"}; }
     if(json.success){
       document.getElementById("formBody").style.display="none";
       document.getElementById("formSuccess").classList.add("show");
