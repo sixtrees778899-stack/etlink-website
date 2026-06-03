@@ -4,9 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>ETLink — 帮助澳洲企业建立中国远程团队</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<link rel="apple-touch-icon" href="/favicon.svg"/>
-<meta name="theme-color" content="#0F172A"/>
 <meta name="description" content="ETLink为澳洲企业提供来自中国的优质专业人才，覆盖招聘、筛选、沟通及日常管理支持。"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -647,31 +644,22 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")document.get
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add("visible")})},{threshold:0.08});
 document.querySelectorAll(".fade-up").forEach(function(el){obs.observe(el)});
 function readBody(req){return new Promise(function(resolve,reject){if(req.body&&typeof req.body==="object"&&!Buffer.isBuffer(req.body))return resolve(req.body);var raw="";req.on("data",function(c){raw+=c.toString()});req.on("end",function(){try{resolve(raw?JSON.parse(raw):{});}catch(_){resolve({})}});req.on("error",reject)})}
-function submitForm(e){
+async function submitForm(e){
   e.preventDefault();
   var btn=document.getElementById("submitBtn");
-  btn.disabled=true;btn.textContent="提交中…";
-  var name=document.getElementById("f-name").value.trim();
-  var company=document.getElementById("f-company").value.trim();
-  var email=document.getElementById("f-email").value.trim();
-  var phone=document.getElementById("f-phone").value.trim();
-  var position=document.getElementById("f-position").value;
-  var message=document.getElementById("f-message").value.trim();
-  var subject=encodeURIComponent("ETLink咨询预约："+name+(company?" · "+company:""));
-  var body=encodeURIComponent(
-    "姓名："+name+"\n"+
-    "公司："+company+"\n"+
-    "邮箱："+email+"\n"+
-    "电话："+phone+"\n"+
-    "招聘岗位："+position+"\n\n"+
-    "需求描述：\n"+message+"\n\n"+
-    "——来自 ETLink 官网联系表单"
-  );
-  window.location.href="mailto:hello@etlink.com.au?subject="+subject+"&body="+body;
-  setTimeout(function(){
-    document.getElementById("formBody").style.display="none";
-    document.getElementById("formSuccess").classList.add("show");
-  },500);
+  var errEl=document.getElementById("formError");
+  btn.disabled=true;btn.textContent="发送中…";errEl.classList.remove("show");
+  var data={name:document.getElementById("f-name").value.trim(),company:document.getElementById("f-company").value.trim(),email:document.getElementById("f-email").value.trim(),phone:document.getElementById("f-phone").value.trim(),position:document.getElementById("f-position").value,message:document.getElementById("f-message").value.trim()};
+  try{
+    var res=await fetch("/API/leads",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)});
+    var raw=await res.text();var json;
+    try{json=JSON.parse(raw);}catch(_){json={success:false,message:"服务器错误，请发邮件至 hello@etlink.com.au"};}
+    if(json.success){document.getElementById("formBody").style.display="none";document.getElementById("formSuccess").classList.add("show");}
+    else{throw new Error(json.message||"提交失败，请稍后重试");}
+  }catch(err){
+    errEl.textContent=err.message;errEl.classList.add("show");
+    btn.disabled=false;btn.textContent="发送咨询 →";
+  }
 }
 </script>
 </body>
