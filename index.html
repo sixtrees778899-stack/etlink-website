@@ -651,7 +651,7 @@ async function submitForm(e){
   btn.disabled=true;btn.textContent="发送中…";errEl.classList.remove("show");
   var data={name:document.getElementById("f-name").value.trim(),company:document.getElementById("f-company").value.trim(),email:document.getElementById("f-email").value.trim(),phone:document.getElementById("f-phone").value.trim(),position:document.getElementById("f-position").value,message:document.getElementById("f-message").value.trim()};
   try{
-    var res=await fetch("/api/leads",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)});
+    var res=await fetch("/API/leads",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)});
     var raw=await res.text();var json;
     try{json=JSON.parse(raw);}catch(_){json={success:false,message:"服务器错误，请发邮件至 hello@etlink.com.au"};}
     if(json.success){document.getElementById("formBody").style.display="none";document.getElementById("formSuccess").classList.add("show");}
