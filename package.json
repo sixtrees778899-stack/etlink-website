@@ -1,7 +1,7 @@
 {
   "name": "etlink-website",
   "version": "2.0.0",
-  "description": "ETLink官网",
+  "description": "ETLink official website",
   "private": true,
   "engines": {
     "node": ">=18.x"
